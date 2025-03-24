@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Online File Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Introduction
+The **Online File Converter** is a web-based tool that allows users to convert files between different formats. It supports:
+- **PDF to DOCX** (Convert PDF files to Word documents)
+- **JPG to PNG** and **PNG to JPG** (Convert images between JPG and PNG formats)
 
-## Available Scripts
+The project consists of a **React.js frontend** and a **Flask backend**.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📁 Project Structure
+```
+online_file_converter/
+│── backend/
+│   ├── app.py  # Flask backend
+│   ├── uploads/  # Directory for uploaded files
+│   ├── converted/  # Directory for converted files
+│   ├── requirements.txt  # Backend dependencies
+│── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── FileConverter.js  # Main UI component
+│   │   ├── App.js  # Main React app
+│   │   ├── index.js  # Entry point for React
+│   ├── public/
+│   ├── package.json  # Frontend dependencies
+│── README.md  # Project documentation
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Installation and Setup
 
-### `npm test`
+### 1️⃣ Backend (Flask API)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### **Step 1: Install Python and Virtual Environment**
+Ensure you have **Python 3** installed. Then, navigate to the `backend/` folder:
+```sh
+cd backend
+python -m venv venv  # Create a virtual environment
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate  # Windows
+```
 
-### `npm run build`
+#### **Step 2: Install Dependencies**
+```sh
+pip install -r requirements.txt
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### **Step 3: Run the Backend**
+```sh
+python app.py
+```
+The server will start on `http://127.0.0.1:5000`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2️⃣ Frontend (React.js)
 
-### `npm run eject`
+#### **Step 1: Install Node.js**
+Ensure you have **Node.js** installed. Then, navigate to the `frontend/` folder:
+```sh
+cd frontend
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### **Step 2: Install Dependencies**
+```sh
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### **Step 3: Install Tailwind CSS**
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### **Step 4: Start the Frontend**
+```sh
+npm start
+```
+The frontend will run on `http://localhost:3000`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🔄 How to Use
+1. **Upload a file** using the file selection input.
+2. **Choose a conversion format** (PDF to DOCX, JPG to PNG, PNG to JPG).
+3. **Click the "Convert" button**.
+4. The file will be processed, and the **converted file will be downloaded automatically**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔧 Troubleshooting
 
-### Code Splitting
+### ❌ *Error: "ModuleNotFoundError: No module named 'flask'"*
+Solution:
+```sh
+pip install flask flask-cors pdf2docx pillow
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### ❌ *Error: "Failed to Fetch" in Frontend*
+Solution:
+- Ensure the backend is **running on port 5000** (`http://127.0.0.1:5000`)
+- Check if CORS is enabled in `app.py`:
+  ```python
+  from flask_cors import CORS
+  CORS(app)
+  ```
 
-### Analyzing the Bundle Size
+### ❌ *Error: "tailwind not recognized" in Frontend*
+Solution:
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
